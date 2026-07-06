@@ -299,6 +299,8 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .tax-info-confirm-area{position:absolute;left:0;right:0;bottom:0;height:65.28px;padding:29px 9.6px 9.4px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,#fff 37%,#fff 100%);z-index:10}
 .tax-info-confirm{width:160.8px;height:26.88px;border:0;border-radius:5.76px;background:var(--gray-90);color:#fff;font:700 7.68px/12px var(--font-display);letter-spacing:0;cursor:pointer}
 .tax-info-confirm:active{transform:translateY(1px)}
+.tax-info-cursor{position:absolute;left:92px;top:239px;width:34px;height:34px;z-index:12;opacity:0;animation:taxTalkCursorClick 1.85s ease forwards;pointer-events:none}
+.tax-info-section.is-complete .tax-info-cursor{opacity:0;animation:none}
 .tax-result-section{margin:200px 0 0;padding:0 20px;background:#fff}
 .tax-result-card{width:180px;height:284px;margin:0 auto;border:1px solid #BEBEC1;border-bottom:0;border-radius:20px 20px 0 0;background:#fff;overflow:hidden}
 .tax-info-card .tax-result-card{position:absolute;left:0;top:0;margin:0;border:0;background:transparent;border-radius:20px 20px 0 0;opacity:0;pointer-events:none;transition:opacity .38s ease,transform .38s ease;transform:translateY(6px);z-index:3}
@@ -338,16 +340,20 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .tax-doc-section .app-mockup-fixed-action{transition:height .38s ease,padding .38s ease}
 .tax-doc-action-stack{display:grid;gap:3.84px}
 .tax-doc-secondary-button{display:none;width:160.8px;height:26.88px;border:.48px solid #A2A2A5;border-radius:5.76px;background:#fff;color:var(--gray-90);font:700 7.68px/12px var(--font-display);letter-spacing:0;cursor:pointer}
+.tax-doc-cursor{position:absolute;left:92px;top:239px;width:34px;height:34px;z-index:12;opacity:0;animation:taxTalkCursorClick 1.85s ease forwards;pointer-events:none}
 .tax-doc-section.is-complete .tax-doc-scroll{opacity:0;pointer-events:none;transform:translateY(-6px)}
 .tax-doc-section.is-complete .app-mockup-layer{opacity:1;pointer-events:none;transform:translateY(0)}
 .tax-doc-section.is-complete .app-mockup-fixed-action{height:100.8px;padding:28.8px 9.6px 14.4px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,#fff 44.841%,#fff 100%)}
 .tax-doc-section.is-complete .tax-doc-secondary-button{display:block}
+.tax-doc-section.is-complete .tax-doc-cursor{opacity:0;animation:none}
 .receipt-flow-section .receipt-start-scroll{padding:48px 9.6px 100.8px;display:flex;flex-direction:column;align-items:center;gap:19.2px;text-align:center}
 .receipt-flow-section .app-mockup-fixed-action{height:100.8px;padding:28.8px 9.6px 14.4px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,#fff 44.841%,#fff 100%);transition:opacity .38s ease,transform .38s ease}
 .receipt-flow-section .tax-doc-secondary-button{display:block}
+.receipt-flow-cursor{position:absolute;left:92px;top:203px;width:34px;height:34px;z-index:12;opacity:0;animation:taxTalkCursorClick 1.85s ease forwards;pointer-events:none}
 .receipt-flow-section.is-complete .receipt-start-scroll{opacity:0;pointer-events:none;transform:translateY(-6px)}
 .receipt-flow-section.is-complete .app-mockup-fixed-action{opacity:0;pointer-events:none;transform:translateY(8px)}
 .receipt-flow-section.is-complete .receipt-layer{opacity:1;pointer-events:none;transform:translateY(0)}
+.receipt-flow-section.is-complete .receipt-flow-cursor{opacity:0;animation:none}
 .receipt-layer{padding:20px 9px 0;color:var(--gray-80);font-family:var(--font-body)}
 .receipt-title-row{width:160px;display:flex;align-items:center;justify-content:space-between;margin:0}
 .receipt-title{margin:0;font:700 11px/14px var(--font-body);color:var(--gray-90);letter-spacing:0}
@@ -369,6 +375,54 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .receipt-caution{display:grid;grid-template-columns:5.35px 1fr;gap:1px;font:500 4.46px/5.35px var(--font-body);color:var(--gray-60);letter-spacing:0}
 .receipt-caution:before{content:"!";width:5.35px;height:5.35px;border-radius:50%;background:var(--gray-20);color:var(--gray-60);font:700 3.8px/5.35px var(--font-body);text-align:center}
 .receipt-caution b{color:#2588EB;font-weight:500}
+.tax-talk-phone{background:#B8C7D2}
+.tax-talk-app{position:absolute;left:8px;top:31px;display:grid;grid-template-columns:20px auto;column-gap:5px;align-items:start}
+.tax-talk-icon{width:20px;height:20px;border-radius:4px;background:#fff;display:flex;align-items:center;justify-content:center}
+.tax-talk-icon img{width:10px;height:8px;display:block}
+.tax-talk-name{padding-top:0;font:600 8px/12px var(--font-body);color:#141415;letter-spacing:-.01em}
+.tax-talk-card{position:absolute;left:32px;top:45px;width:123px;height:137px;border-radius:7px;background:#fff;overflow:hidden}
+.tax-talk-header{height:23px;padding:5px 7px;background:#FFE500;font:700 7px/12px var(--font-body);color:#141415;letter-spacing:-.01em}
+.tax-talk-body{padding:8px 7px 0}
+.tax-talk-title{margin:0 0 12px;font:400 8.5px/12px var(--font-body);color:#141415;letter-spacing:-.01em;word-break:keep-all}
+.tax-talk-copy{margin:0;font:400 8.5px/12px var(--font-body);color:#141415;letter-spacing:-.01em;word-break:keep-all}
+.tax-talk-cta{position:absolute;left:8px;right:8px;bottom:8px;height:24px;border-radius:2px;background:var(--gray-10);display:flex;align-items:center;justify-content:center;font:400 7px/12px var(--font-body);letter-spacing:-.01em;color:#141415}
+.tax-talk-cursor{position:absolute;left:87px;top:151px;width:34px;height:34px;z-index:6;opacity:0;animation:taxTalkCursorClick 1.65s ease forwards;pointer-events:none}
+.tax-talk-next-screen{position:absolute;left:0;top:0;width:180px;height:284px;border-radius:20px 20px 0 0;background:#fff;z-index:5;transform:translateY(100%);transition:transform .48s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.tax-talk-section.is-open .tax-talk-next-screen{transform:translateY(0)}
+.tax-talk-section.is-open .tax-talk-cursor{opacity:0;animation:none}
+.tax-next-reported{padding:31px 9.6px 0;height:73.84px;background:#fff}
+.tax-next-title{margin:0;font:700 8.64px/12.48px var(--font-body);color:var(--gray-90);letter-spacing:0}
+.tax-next-amount{display:flex;align-items:center;gap:2.5px;margin-top:1px;font:700 11.52px/15.36px var(--font-display);color:var(--gray-90)}
+.tax-next-refresh{width:7.68px;height:7.68px;border:1px solid var(--gray-40);border-radius:50%;position:relative;opacity:.75}
+.tax-next-refresh:after{content:"";position:absolute;left:2px;top:1.5px;width:3.4px;height:3.4px;border-top:1px solid var(--gray-40);border-right:1px solid var(--gray-40);transform:rotate(45deg)}
+.tax-next-desc{display:inline-flex;align-items:center;gap:2px;margin-top:1px;font:400 6.72px/9.6px var(--font-body);color:var(--gray-60);letter-spacing:0}
+.tax-next-help{width:7.68px;height:7.68px;border-radius:50%;background:var(--gray-60);color:#fff;font:700 5px/7.68px var(--font-body);text-align:center}
+.tax-next-limit-wrap{height:62.24px;padding:9.96px 9.6px 0;background:#fff}
+.tax-next-limit-card{width:160.8px;height:39.2px;border:.48px solid var(--gray-20);border-radius:3.84px;padding:7.2px 7.68px;background:#fff}
+.tax-next-row{display:flex;align-items:center;justify-content:space-between;height:10px;font:400 6.24px/8.64px var(--font-body);color:var(--gray-60)}
+.tax-next-row+.tax-next-row{margin-top:3.84px}
+.tax-next-row strong{font:700 6.72px/9.6px var(--font-body);color:var(--gray-90)}
+.tax-next-tabs{height:28.36px;border-bottom:.48px solid var(--gray-20);display:flex;align-items:flex-end;gap:7.68px;padding:0 9.6px;background:#fff}
+.tax-next-tab{height:28.36px;display:flex;align-items:center;font:700 8.64px/12.48px var(--font-body);color:var(--gray-60)}
+.tax-next-tab.is-active{color:var(--gray-90);border-bottom:.96px solid var(--gray-90)}
+.tax-next-pending{height:46.24px;padding:7.68px 9.6px 0;background:#fff}
+.tax-next-pending-label{margin:0 0 1.92px;font:400 5.76px/7.68px var(--font-body);color:var(--gray-60)}
+.tax-next-pending-main{display:flex;align-items:center;justify-content:space-between;height:11px}
+.tax-next-pending-amount{font:700 7.2px/10.56px var(--font-body);color:var(--gray-90)}
+.tax-next-badges{display:flex;align-items:center;gap:2px}
+.tax-next-badge{height:10.84px;border-radius:1.92px;padding:2px 3px;font:700 5.28px/6.72px var(--font-body)}
+.tax-next-badge.is-blue{background:#E9F3FD;color:#2588EB}
+.tax-next-badge.is-orange{background:#FFF2E5;color:var(--orange-60)}
+.tax-next-chevron{font-size:10px;line-height:1;color:var(--gray-60)}
+.tax-next-date{margin:1.4px 0 0;font:500 6.24px/8.64px var(--font-body);color:var(--gray-60)}
+@keyframes taxTalkCursorClick{
+  0%{opacity:0;transform:translate(-10px,-10px) scale(1)}
+  20%{opacity:1;transform:translate(0,0) scale(1)}
+  58%{opacity:1;transform:translate(0,0) scale(1)}
+  70%{opacity:1;transform:translate(0,0) scale(.9)}
+  82%{opacity:1;transform:translate(0,0) scale(1)}
+  100%{opacity:0;transform:translate(0,0) scale(1)}
+}
 .legend{display:flex;gap:6px;flex-wrap:wrap;padding:10px 0 0}
 .legend button{height:28px;border:1px solid var(--line-strong);border-radius:999px;background:#fff;padding:0 8px;display:inline-flex;align-items:center;gap:5px;font:var(--type-caption-2-bold);color:var(--gray-80)}
 .legend button:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--series-color)}
@@ -591,6 +645,7 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
           <div class="tax-info-confirm-area app-mockup-fixed-action">
             <button class="tax-info-confirm app-mockup-button" type="button">확인했어요</button>
           </div>
+          <img class="tax-info-cursor" src="assets/mousecursor.png" alt="">
         </div>
       </div>
     </section>
@@ -630,6 +685,7 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
               <button class="tax-doc-secondary-button" type="button">닫기</button>
             </div>
           </div>
+          <img class="tax-doc-cursor" src="assets/mousecursor.png" alt="">
         </div>
       </div>
     </section>
@@ -735,6 +791,56 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
             <div class="tax-doc-action-stack">
               <button class="app-mockup-button" type="button">신고 접수증 보기</button>
               <button class="tax-doc-secondary-button" type="button">닫기</button>
+            </div>
+          </div>
+          <img class="receipt-flow-cursor" src="assets/mousecursor.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section class="tax-talk-section app-mockup-section" aria-label="증여금 정상 입금 알림톡 화면">
+      <div class="app-mockup-stage">
+        <div class="app-mockup-phone tax-talk-phone">
+          <div class="tax-talk-app" aria-hidden="true">
+            <span class="tax-talk-icon"><img src="assets/pi-union.svg" alt="Pi"></span>
+            <span class="tax-talk-name">파이</span>
+          </div>
+          <div class="tax-talk-card">
+            <div class="tax-talk-header">알림톡 도착</div>
+            <div class="tax-talk-body">
+              <p class="tax-talk-title">[파이] 증여금 정상 입금 안내</p>
+              <p class="tax-talk-copy">김한화 님이 요청하신 증여금이<br>김대한 계좌에 입금되었어요.</p>
+            </div>
+            <div class="tax-talk-cta">증여 정보 확인하기</div>
+          </div>
+          <img class="tax-talk-cursor" src="assets/mousecursor.png" alt="">
+          <div class="tax-talk-next-screen" aria-label="증여 정보 확인 화면">
+            <div class="tax-next-reported">
+              <h2 class="tax-next-title">증여세 신고 금액</h2>
+              <div class="tax-next-amount">0원<span class="tax-next-refresh" aria-hidden="true"></span></div>
+              <div class="tax-next-desc">지난 10년간 홈택스에 신고한 내역이에요 <span class="tax-next-help">?</span></div>
+            </div>
+            <div class="tax-next-limit-wrap">
+              <div class="tax-next-limit-card">
+                <div class="tax-next-row"><span>남은 증여재산공제 한도</span><strong>0원</strong></div>
+                <div class="tax-next-row"><span>신고해야 할 금액</span><strong>15,543,331원</strong></div>
+              </div>
+            </div>
+            <div class="tax-next-tabs">
+              <span class="tax-next-tab">신고 완료</span>
+              <span class="tax-next-tab is-active">신고 전</span>
+            </div>
+            <div class="tax-next-pending">
+              <p class="tax-next-pending-label">유기정기금</p>
+              <div class="tax-next-pending-main">
+                <strong class="tax-next-pending-amount">20,454,062원</strong>
+                <div class="tax-next-badges">
+                  <span class="tax-next-badge is-blue">신고 가능</span>
+                  <span class="tax-next-badge is-orange">D-120</span>
+                  <span class="tax-next-chevron">›</span>
+                </div>
+              </div>
+              <p class="tax-next-date">26.06.31 증여 예정</p>
             </div>
           </div>
         </div>
@@ -1175,11 +1281,17 @@ function initReceiptFlow(){
   if(!section)return;
   window.setTimeout(()=>section.classList.add("is-complete"),2000);
 }
+function initTaxTalkFlow(){
+  const section=document.querySelector(".tax-talk-section");
+  if(!section)return;
+  window.setTimeout(()=>section.classList.add("is-open"),1650);
+}
 render();
 renderReturnChart();
 initTaxFlow();
 initTaxDocFlow();
 initReceiptFlow();
+initTaxTalkFlow();
 </script>
 </body>
 </html>
