@@ -362,11 +362,8 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .tax-talk-section.is-open .tax-talk-cursor{opacity:0;animation:none}
 .tax-next-reported{padding:31px 9.6px 0;height:73.84px;background:#fff}
 .tax-next-title{margin:0;font:700 8.64px/12.48px var(--font-body);color:var(--gray-90);letter-spacing:0}
-.tax-next-amount{display:flex;align-items:center;gap:2.5px;margin-top:1px;font:700 11.52px/15.36px var(--font-display);color:var(--gray-90)}
-.tax-next-refresh{width:7.68px;height:7.68px;border:1px solid var(--gray-40);border-radius:50%;position:relative;opacity:.75}
-.tax-next-refresh:after{content:"";position:absolute;left:2px;top:1.5px;width:3.4px;height:3.4px;border-top:1px solid var(--gray-40);border-right:1px solid var(--gray-40);transform:rotate(45deg)}
-.tax-next-desc{display:inline-flex;align-items:center;gap:2px;margin-top:1px;font:400 6.72px/9.6px var(--font-body);color:var(--gray-60);letter-spacing:0}
-.tax-next-help{width:7.68px;height:7.68px;border-radius:50%;background:var(--gray-60);color:#fff;font:700 5px/7.68px var(--font-body);text-align:center}
+.tax-next-amount{margin-top:1px;font:700 11.52px/15.36px var(--font-display);color:var(--gray-90)}
+.tax-next-desc{margin-top:1px;font:400 6.72px/9.6px var(--font-body);color:var(--gray-60);letter-spacing:0}
 .tax-next-limit-wrap{height:62.24px;padding:9.96px 9.6px 0;background:#fff}
 .tax-next-limit-card{width:160.8px;height:39.2px;border:.48px solid var(--gray-20);border-radius:3.84px;padding:7.2px 7.68px;background:#fff}
 .tax-next-row{display:flex;align-items:center;justify-content:space-between;height:10px;font:400 6.24px/8.64px var(--font-body);color:var(--gray-60)}
@@ -383,7 +380,8 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .tax-next-badge{height:10.84px;border-radius:1.92px;padding:2px 3px;font:700 5.28px/6.72px var(--font-body)}
 .tax-next-badge.is-blue{background:#E9F3FD;color:#2588EB}
 .tax-next-badge.is-orange{background:#FFF2E5;color:var(--orange-60)}
-.tax-next-chevron{font-size:10px;line-height:1;color:var(--gray-60)}
+.tax-next-chevron{width:7.68px;height:7.68px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 7.68px;color:var(--gray-60)}
+.tax-next-chevron svg{width:4px;height:6px;display:block}
 .tax-next-date{margin:1.4px 0 0;font:500 6.24px/8.64px var(--font-body);color:var(--gray-60)}
 @keyframes taxTalkCursorClick{
   0%{opacity:0;transform:translate(-10px,-10px) scale(1)}
@@ -678,8 +676,8 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
           <div class="tax-talk-next-screen" aria-label="증여 정보 확인 화면">
             <div class="tax-next-reported">
               <h2 class="tax-next-title">증여세 신고 금액</h2>
-              <div class="tax-next-amount">0원<span class="tax-next-refresh" aria-hidden="true"></span></div>
-              <div class="tax-next-desc">지난 10년간 홈택스에 신고한 내역이에요 <span class="tax-next-help">?</span></div>
+              <div class="tax-next-amount">0원</div>
+              <div class="tax-next-desc">지난 10년간 홈택스에 신고한 내역이에요</div>
             </div>
             <div class="tax-next-limit-wrap">
               <div class="tax-next-limit-card">
@@ -698,7 +696,11 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
                 <div class="tax-next-badges">
                   <span class="tax-next-badge is-blue">신고 가능</span>
                   <span class="tax-next-badge is-orange">D-120</span>
-                  <span class="tax-next-chevron">›</span>
+                  <span class="tax-next-chevron" aria-hidden="true">
+                    <svg viewBox="0 0 4 6" fill="none">
+                      <path d="M1 1L3 3L1 5" stroke="currentColor" stroke-width="0.86" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
                 </div>
               </div>
               <p class="tax-next-date">26.06.31 증여 예정</p>
