@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>신고 접수증 확인 플로우</title>
+<style>
+:root{
+  --gray-10:#F2F2F3;--gray-20:#DDDDDF;--gray-40:#A2A2A5;--gray-60:#707075;--gray-80:#39393C;--gray-90:#141415;
+  --orange-10:#FFF2E5;--orange-60:#F37521;
+  --font-display:"LIFEPLUS","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --font-body:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--gray-10);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+body{overflow:auto}
+.desktop-canvas{width:1920px;min-height:1080px;background:var(--gray-10);display:flex;align-items:center;justify-content:center}
+.receipt-flow-stage{width:180px;height:284px;position:relative;transform:scale(2.4);transform-origin:center}
+.app-phone{position:absolute;inset:0;width:180px;height:284px;border:1px solid #BEBEC1;border-bottom:0;border-radius:20px 20px 0 0;background:#fff;overflow:hidden}
+.app-scroll{height:100%;padding:48px 9.6px 100.8px;display:flex;flex-direction:column;align-items:center;gap:19.2px;text-align:center;overflow:hidden;transition:opacity .38s ease,transform .38s ease}
+.complete-icon{width:34.56px;height:34.56px;border-radius:50%;background:var(--orange-60);position:relative;flex:0 0 auto}
+.complete-icon:after{content:"";position:absolute;left:50%;top:50%;width:10px;height:6px;border-left:2.2px solid #fff;border-bottom:2.2px solid #fff;transform:translate(-50%,-58%) rotate(-45deg);transform-origin:center}
+.complete-title{margin:0 0 4.8px;font:700 11.52px/15.36px var(--font-display);color:var(--gray-90)}
+.complete-desc{margin:0;font:400 7.68px/11.52px var(--font-body);color:var(--gray-80);letter-spacing:0;text-align:center;word-break:keep-all}
+.fixed-action{position:absolute;left:0;right:0;bottom:0;height:100.8px;padding:28.8px 9.6px 14.4px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,#fff 44.841%,#fff 100%);z-index:10;transition:opacity .38s ease,transform .38s ease}
+.action-stack{display:grid;gap:3.84px}
+.primary-button,.secondary-button{width:160.8px;height:26.88px;border-radius:5.76px;font:700 7.68px/12px var(--font-display);letter-spacing:0}
+.primary-button{border:0;background:var(--gray-90);color:#fff}
+.secondary-button{border:.48px solid var(--gray-40);background:#fff;color:var(--gray-90)}
+.cursor{position:absolute;left:92px;top:242px;width:34px;height:34px;z-index:12;opacity:0;animation:cursorClick 1.85s ease forwards;pointer-events:none}
+.receipt-layer{position:absolute;left:0;top:0;width:180px;height:284px;margin:0;border:0;background:#fff;border-radius:20px 20px 0 0;pointer-events:none;transition:transform .46s cubic-bezier(.22,.9,.26,1);transform:translateY(100%);z-index:11;padding:20px 9px 0;color:var(--gray-80);font-family:var(--font-body);overflow:hidden}
+.receipt-title-row{width:160px;display:flex;align-items:center;justify-content:space-between;margin:0}
+.receipt-title{margin:0;font:700 9.6px/12px var(--font-body);color:var(--gray-90);letter-spacing:0}
+.receipt-hometax{width:51px;height:20px;display:block;object-fit:cover}
+.receipt-disclaimer{box-sizing:border-box;width:160.8px;min-height:42px;margin:5px 0 9px;padding:6px;border-radius:4px;background:var(--orange-10);display:flex;align-items:center;justify-content:center;font:600 6px/9px var(--font-body);color:var(--gray-90);letter-spacing:-.07px;text-align:center;word-break:keep-all}
+.receipt-line{width:160px;height:.45px;margin:0 0 8.46px;background:var(--gray-80);opacity:.8}
+.receipt-block{width:160px;margin:0 0 8.91px}
+.receipt-table{width:100%;border-collapse:collapse;table-layout:fixed;font:400 4.46px/5.35px var(--font-body);color:var(--gray-80)}
+.receipt-table td{height:10.7px;padding:1.78px;border-top:.45px solid var(--gray-80);border-bottom:.45px solid var(--gray-80);border-right:.45px solid var(--gray-80);white-space:nowrap;overflow:hidden;text-overflow:clip;vertical-align:middle}
+.receipt-table td:last-child{border-right:0}
+.receipt-table .label{background:var(--gray-10);font-weight:700}
+.receipt-table .right{text-align:right}
+.receipt-section-title{display:flex;align-items:center;gap:1px;margin:0 0 3.56px;font:700 4.9px/6.24px var(--font-body);color:var(--gray-80)}
+.receipt-section-title:before{content:"";width:7.13px;height:7.13px;background:radial-gradient(circle at center,var(--gray-80) 0 1.1px,transparent 1.2px)}
+.receipt-notice{display:flex;align-items:center;justify-content:center;width:160px;margin:8.91px 0 8.65px;padding:3.56px;background:var(--gray-10);font:700 4.9px/6.24px var(--font-body);color:var(--gray-80)}
+.receipt-notice b{color:#F00}
+.receipt-detail-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:3.56px}
+.receipt-unit{font:400 4.46px/5.35px var(--font-body);color:var(--gray-80)}
+.receipt-cautions{width:160px;margin:8.91px 0 0;padding:3.56px;border:.45px solid var(--gray-20);border-radius:3.56px;display:grid;gap:3.56px}
+.receipt-caution{display:grid;grid-template-columns:5.35px 1fr;gap:1px;margin:0;font:500 4.46px/5.35px var(--font-body);color:var(--gray-60);letter-spacing:0}
+.receipt-caution:before{content:"!";width:5.35px;height:5.35px;border-radius:50%;background:var(--gray-20);color:var(--gray-60);font:700 3.8px/5.35px var(--font-body);text-align:center}
+.receipt-caution b{color:#2588EB;font-weight:500}
+.is-complete .app-scroll{opacity:0;pointer-events:none;transform:translateY(-6px)}
+.is-complete .fixed-action{opacity:0;pointer-events:none;transform:translateY(8px)}
+.is-complete .receipt-layer{pointer-events:none;transform:translateY(0)}
+.is-complete .cursor{opacity:0;animation:none}
+@keyframes cursorClick{
+  0%{opacity:0;transform:translate(18px,18px) scale(.98)}
+  20%{opacity:1;transform:translate(0,0) scale(1)}
+  62%{opacity:1;transform:translate(0,0) scale(1)}
+  72%{opacity:1;transform:translate(0,1px) scale(.92)}
+  82%{opacity:1;transform:translate(0,0) scale(1)}
+  100%{opacity:1;transform:translate(0,0) scale(1)}
+}
+</style>
+</head>
+<body>
+<main class="desktop-canvas">
+  <section class="receipt-flow-stage" aria-label="신고 접수증 확인 플로우">
+    <div class="app-phone">
+      <div class="app-scroll">
+        <span class="complete-icon" aria-hidden="true"></span>
+        <div>
+          <h1 class="complete-title">신고 접수 완료</h1>
+          <p class="complete-desc">국세청 홈택스에 증여세 신고서가 접수됐어요.<br>자녀의 자산이 커지는 모습을 보며,<br>다음 증여도 함께 준비해 보아요!</p>
+        </div>
+      </div>
+      <div class="receipt-layer" aria-label="증여세 신고서 접수증">
+        <div class="receipt-title-row">
+          <h2 class="receipt-title">증여세 신고서 접수증</h2>
+          <img class="receipt-hometax" src="assets/hometax-receipt-logo.png" alt="HomeTax">
+        </div>
+        <p class="receipt-disclaimer">본 화면은 홈택스에서 조회한 데이터를 기반으로<br>재구성한 내용입니다.<br>원본 신고서는 홈택스에서 확인하실 수 있습니다.</p>
+        <div class="receipt-line"></div>
+        <div class="receipt-block">
+          <table class="receipt-table">
+            <tr><td class="label" style="width:27.187px">사용자 ID</td><td style="width:59.721px">hanwha0123</td><td class="label" style="width:27.187px">사용자명</td><td>김대한</td></tr>
+            <tr><td class="label">접수번호</td><td>144-2024-2-50429425990</td><td class="label">접수일시</td><td>2024-11-26 09:37:52</td></tr>
+            <tr><td class="label">접수결과</td><td colspan="3">정상</td></tr>
+          </table>
+        </div>
+        <div class="receipt-block">
+          <h3 class="receipt-section-title">제출내역</h3>
+          <table class="receipt-table">
+            <tr><td class="label" style="width:27.187px">상호(성명)</td><td style="width:45.905px">김대한</td><td class="label" style="width:41.003px">사업자(주민)등록번호</td><td>240101-*******</td></tr>
+            <tr><td class="label">신고서종류</td><td>증여세 기본세율 신고서</td><td class="label">접수방법</td><td>인터넷(작성)</td></tr>
+            <tr><td class="label">첨부한서류</td><td>1종</td><td class="label">신고구분</td><td>정기(확정) / 정기신고</td></tr>
+          </table>
+        </div>
+        <div class="receipt-notice">국세청홈택스에 위와 같이&nbsp;<b>접수되었습니다.</b></div>
+        <div class="receipt-block">
+          <div class="receipt-detail-head">
+            <h3 class="receipt-section-title">상세내역</h3>
+            <span class="receipt-unit">(단위 : 원)</span>
+          </div>
+          <table class="receipt-table">
+            <tr><td class="label" style="width:27.187px">증여일자</td><td style="width:45.905px">2024/11/15</td><td class="label" style="width:41.003px">차가감<br>자진납부할세액</td><td class="right">0</td></tr>
+            <tr><td class="label">과세표준</td><td class="right">0</td><td class="label">연부연납세액</td><td class="right">0</td></tr>
+            <tr><td class="label">산출세액</td><td class="right">0</td><td class="label">분납할세액</td><td class="right">0</td></tr>
+            <tr><td class="label"></td><td class="label"></td><td class="label">차감납부세액</td><td class="right">0</td></tr>
+          </table>
+        </div>
+        <div class="receipt-cautions">
+          <p class="receipt-caution"><span>(중요) 접수증에 표시된 내용이 신고하고자 한 내용과 일치하는지 반드시 확인하시기 바랍니다.</span></p>
+          <p class="receipt-caution"><span>(주의) 정기신고인 경우 신고기한 내에 여러 번 신고하더라도 <b>최종 접수된 신고서만 유효</b> 한 것으로 봅니다.</span></p>
+        </div>
+      </div>
+      <div class="fixed-action">
+        <div class="action-stack">
+          <button class="primary-button" type="button">확인</button>
+          <button class="secondary-button" type="button">신고 접수증 보기</button>
+        </div>
+      </div>
+      <img class="cursor" src="assets/mousecursor.png" alt="">
+    </div>
+  </section>
+</main>
+<script>
+window.setTimeout(()=>{
+  document.querySelector(".receipt-flow-stage")?.classList.add("is-complete");
+},2000);
+</script>
+</body>
+</html>

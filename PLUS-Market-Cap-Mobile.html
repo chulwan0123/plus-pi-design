@@ -352,6 +352,7 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .receipt-flow-section .app-mockup-fixed-action{height:100.8px;padding:28.8px 9.6px 14.4px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,#fff 44.841%,#fff 100%);transition:opacity .38s ease,transform .38s ease}
 .receipt-flow-section .tax-doc-secondary-button{display:block}
 .receipt-flow-cursor{position:absolute;left:92px;top:242px;width:34px;height:34px;z-index:12;opacity:0;animation:taxTalkCursorClick 1.85s ease forwards;pointer-events:none}
+.receipt-flow-section .receipt-layer{opacity:1;transform:translateY(100%);transition:transform .46s cubic-bezier(.22,.9,.26,1);z-index:11;background:#fff}
 .receipt-flow-section.is-complete .receipt-start-scroll{opacity:0;pointer-events:none;transform:translateY(-6px)}
 .receipt-flow-section.is-complete .app-mockup-fixed-action{opacity:0;pointer-events:none;transform:translateY(8px)}
 .receipt-flow-section.is-complete .receipt-layer{opacity:1;pointer-events:none;transform:translateY(0)}
@@ -379,6 +380,15 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .receipt-caution{display:grid;grid-template-columns:5.35px 1fr;gap:1px;font:500 4.46px/5.35px var(--font-body);color:var(--gray-60);letter-spacing:0}
 .receipt-caution:before{content:"!";width:5.35px;height:5.35px;border-radius:50%;background:var(--gray-20);color:var(--gray-60);font:700 3.8px/5.35px var(--font-body);text-align:center}
 .receipt-caution b{color:#2588EB;font-weight:500}
+.receipt-standalone-section{margin:200px 0 0;padding:200px 0;background:var(--gray-10);display:flex;justify-content:center}
+.receipt-standalone-paper{position:relative;width:180px;height:284px;border:1px solid #BEBEC1;border-bottom:0;border-radius:20px 20px 0 0;background:#fff;overflow:hidden}
+.receipt-standalone-section .receipt-start-scroll{padding:48px 9.6px 100.8px;display:flex;flex-direction:column;align-items:center;gap:19.2px;text-align:center}
+.receipt-standalone-section .app-mockup-fixed-action{height:100.8px;padding:28.8px 9.6px 14.4px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,#fff 44.841%,#fff 100%);transition:opacity .38s ease,transform .38s ease}
+.receipt-standalone-section .tax-doc-secondary-button{display:block}
+.receipt-standalone-section.is-complete .receipt-start-scroll{opacity:0;pointer-events:none;transform:translateY(-6px)}
+.receipt-standalone-section.is-complete .app-mockup-fixed-action{opacity:0;pointer-events:none;transform:translateY(8px)}
+.receipt-standalone-section.is-complete .receipt-layer{opacity:1;pointer-events:none;transform:translateY(0)}
+.receipt-standalone-section.is-complete .receipt-flow-cursor{opacity:0;animation:none}
 .tax-talk-phone{background:#B8C7D2}
 .tax-talk-app{position:absolute;left:8px;top:31px;display:grid;grid-template-columns:20px auto;column-gap:5px;align-items:start}
 .tax-talk-icon{width:20px;height:20px;border-radius:4px;background:#fff;display:flex;align-items:center;justify-content:center}
@@ -1108,6 +1118,113 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 
 
 
+    <section class="receipt-standalone-section" aria-label="증여세 신고서 접수증 단독 화면">
+      <div class="receipt-standalone-paper">
+        <div class="app-mockup-scroll receipt-start-scroll">
+          <span class="tax-doc-complete-icon" aria-hidden="true"></span>
+          <div>
+            <h2 class="tax-doc-complete-title">신고 접수 완료</h2>
+            <p class="tax-doc-complete-desc">국세청 홈택스에 증여세 신고서가 접수됐어요.<br>자녀의 자산이 커지는 모습을 보며,<br>다음 증여도 함께 준비해 보아요!</p>
+          </div>
+        </div>
+        <div class="app-mockup-layer receipt-layer" aria-label="증여세 신고서 접수증">
+          <div class="receipt-title-row">
+            <h2 class="receipt-title">증여세 신고서 접수증</h2>
+            <img class="receipt-hometax" src="assets/hometax-receipt-logo.png" alt="HomeTax">
+          </div>
+          <p class="receipt-disclaimer">본 화면은 홈택스에서 조회한 데이터를 기반으로<br>재구성한 내용입니다.<br>원본 신고서는 홈택스에서 확인하실 수 있습니다.</p>
+          <div class="receipt-line"></div>
+          <div class="receipt-block">
+            <table class="receipt-table">
+              <tr>
+                <td class="label" style="width:27.187px">사용자 ID</td>
+                <td style="width:59.721px">hanwha0123</td>
+                <td class="label" style="width:27.187px">사용자명</td>
+                <td>김대한</td>
+              </tr>
+              <tr>
+                <td class="label">접수번호</td>
+                <td>144-2024-2-50429425990</td>
+                <td class="label">접수일시</td>
+                <td>2024-11-26 09:37:52</td>
+              </tr>
+              <tr>
+                <td class="label">접수결과</td>
+                <td colspan="3">정상</td>
+              </tr>
+            </table>
+          </div>
+          <div class="receipt-block">
+            <h3 class="receipt-section-title">제출내역</h3>
+            <table class="receipt-table">
+              <tr>
+                <td class="label" style="width:27.187px">상호(성명)</td>
+                <td style="width:45.905px">김대한</td>
+                <td class="label" style="width:41.003px">사업자(주민)등록번호</td>
+                <td>240101-*******</td>
+              </tr>
+              <tr>
+                <td class="label">신고서종류</td>
+                <td>증여세 기본세율 신고서</td>
+                <td class="label">접수방법</td>
+                <td>인터넷(작성)</td>
+              </tr>
+              <tr>
+                <td class="label">첨부한서류</td>
+                <td>1종</td>
+                <td class="label">신고구분</td>
+                <td>정기(확정) / 정기신고</td>
+              </tr>
+            </table>
+          </div>
+          <div class="receipt-notice">국세청홈택스에 위와 같이&nbsp;<b>접수되었습니다.</b></div>
+          <div class="receipt-block">
+            <div class="receipt-detail-head">
+              <h3 class="receipt-section-title">상세내역</h3>
+              <span class="receipt-unit">(단위 : 원)</span>
+            </div>
+            <table class="receipt-table">
+              <tr>
+                <td class="label" style="width:27.187px">증여일자</td>
+                <td style="width:45.905px">2024/11/15</td>
+                <td class="label" style="width:41.003px">차가감<br>자진납부할세액</td>
+                <td class="right">0</td>
+              </tr>
+              <tr>
+                <td class="label">과세표준</td>
+                <td class="right">0</td>
+                <td class="label">연부연납세액</td>
+                <td class="right">0</td>
+              </tr>
+              <tr>
+                <td class="label">산출세액</td>
+                <td class="right">0</td>
+                <td class="label">분납할세액</td>
+                <td class="right">0</td>
+              </tr>
+              <tr>
+                <td class="label"></td>
+                <td class="label"></td>
+                <td class="label">차감납부세액</td>
+                <td class="right">0</td>
+              </tr>
+            </table>
+          </div>
+          <div class="receipt-cautions">
+            <p class="receipt-caution"><span>(중요) 접수증에 표시된 내용이 신고하고자 한 내용과 일치하는지 반드시 확인하시기 바랍니다.</span></p>
+            <p class="receipt-caution"><span>(주의) 정기신고인 경우 신고기한 내에 여러 번 신고하더라도 <b>최종 접수된 신고서만 유효</b> 한 것으로 봅니다.</span></p>
+          </div>
+        </div>
+        <div class="app-mockup-fixed-action">
+          <div class="tax-doc-action-stack">
+            <button class="app-mockup-button" type="button">확인</button>
+            <button class="tax-doc-secondary-button" type="button">신고 접수증 보기</button>
+          </div>
+        </div>
+        <img class="receipt-flow-cursor" src="assets/mousecursor.png" alt="">
+      </div>
+    </section>
+
   </section>
   <div class="tooltip" data-index-chart-tooltip></div>
 </main>
@@ -1284,9 +1401,9 @@ function initTaxDocFlow(){
   },2000);
 }
 function initReceiptFlow(){
-  const section=document.querySelector(".receipt-flow-section");
-  if(!section)return;
-  window.setTimeout(()=>section.classList.add("is-complete"),2000);
+  document.querySelectorAll(".receipt-flow-section,.receipt-standalone-section").forEach(section=>{
+    window.setTimeout(()=>section.classList.add("is-complete"),2000);
+  });
 }
 function initTaxTalkFlow(){
   const section=document.querySelector(".tax-talk-section");
