@@ -360,7 +360,9 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .receipt-title-row{width:160px;display:flex;align-items:center;justify-content:space-between;margin:0}
 .receipt-title{margin:0;font:700 11px/14px var(--font-body);color:var(--gray-90);letter-spacing:0}
 .receipt-hometax{width:51px;height:20px;display:block;object-fit:cover}
+.receipt-disclaimer{box-sizing:border-box;width:160.8px;min-height:42px;margin:5px 0 9px;padding:6px;border-radius:4px;background:var(--orange-10);display:flex;align-items:center;justify-content:center;font:600 7px/10px var(--font-body);color:var(--gray-90);letter-spacing:-.07px;text-align:center;word-break:keep-all}
 .receipt-line{width:160px;height:.45px;margin:16px 0 8.46px;background:var(--gray-80);opacity:.8}
+.receipt-disclaimer+.receipt-line{margin:0 0 8.46px}
 .receipt-block{width:160px;margin:0 0 8.91px}
 .receipt-table{width:100%;border-collapse:collapse;table-layout:fixed;font:400 4.46px/5.35px var(--font-body);color:var(--gray-80)}
 .receipt-table td{height:10.7px;padding:1.78px;border-top:.45px solid var(--gray-80);border-bottom:.45px solid var(--gray-80);border-right:.45px solid var(--gray-80);white-space:nowrap;overflow:hidden;text-overflow:clip;vertical-align:middle}
@@ -705,6 +707,7 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
               <h2 class="receipt-title">증여세 신고서 접수증</h2>
               <img class="receipt-hometax" src="assets/hometax-receipt-logo.png" alt="HomeTax">
             </div>
+            <p class="receipt-disclaimer">본 화면은 홈택스에서 조회한 데이터를 기반으로<br>재구성한 내용입니다.<br>원본 신고서는 홈택스에서 확인하실 수 있습니다.</p>
             <div class="receipt-line"></div>
             <div class="receipt-block">
               <table class="receipt-table">
