@@ -65,6 +65,8 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
 .compare-cell.is-etf{background:#fff;color:var(--orange-60);font:var(--type-label-2-bold)}
 .compare-cell.is-muted{color:var(--gray-90);font:var(--type-label-2-regular)}
 .compare-cell.is-multiline{align-items:flex-start;justify-content:center;flex-direction:column;line-height:18px}
+.compare-cost-line{display:block;width:100%}
+.compare-cost-line+.compare-cost-line{margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
 .compare-small{display:block;margin-top:2px;font:700 10px/14px var(--font-body)}
 .compare-note{margin:12px 0 0;font:var(--type-label-2-regular);color:var(--gray-60);word-break:keep-all}
 .table-card{margin:200px 0 0;background:#fff;overflow:hidden}
@@ -886,9 +888,9 @@ h1{margin:0 0 10px;font:var(--type-title-1);letter-spacing:0}
         </div>
         <div class="compare-row">
           <div class="compare-cell">거래 비용</div>
-          <div class="compare-cell is-etf is-multiline">증권거래세 면제 및 운용보수 낮음</div>
-          <div class="compare-cell is-muted">증권거래세 부과</div>
-          <div class="compare-cell is-muted">보수 높은 편</div>
+          <div class="compare-cell is-etf is-multiline">매매 수수료 + 낮은 운용보수</div>
+          <div class="compare-cell is-muted is-multiline"><span class="compare-cost-line">국내 : 매매 수수료 + 증권거래세</span><span class="compare-cost-line">해외 : 매매 수수료</span></div>
+          <div class="compare-cell is-muted is-multiline">높은 운용·판매보수 (일부 환매수수료)</div>
         </div>
         <div class="compare-row">
           <div class="compare-cell">환금성</div>
