@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--gray-70:#555558;--gray-90:#141415;--orange-60:#F37521;--line:#ECEDEF;--font-body:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;--type-label-2-regular:400 13px/18px var(--font-body);--type-label-2-bold:700 13px/18px var(--font-body);--type-caption-1-bold:700 12px/18px var(--font-body)}
+*{box-sizing:border-box}
+html,body{margin:0;width:335px;background:#fff;color:var(--gray-90);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+.compare-table{width:335px;border:0;border-radius:0;overflow:hidden;background:#fff;box-shadow:inset 0 1px 0 var(--gray-90),inset 0 -1px 0 var(--gray-90);position:relative}
+.compare-table:before,.compare-table:after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--gray-90);z-index:20;pointer-events:none}
+.compare-table:before{top:0}.compare-table:after{bottom:0}
+.compare-row{display:grid;grid-template-columns:75px 86px 86px 86px;min-height:52px;border-bottom:1px solid var(--line);background:#fff}
+.compare-row:last-child{border-bottom:0}
+.compare-row.is-head{position:relative;z-index:1;min-height:44px;background:#F7F8FA;border-bottom-color:transparent}
+.compare-row.is-head:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gray-90);z-index:20;pointer-events:none}
+.compare-cell{display:flex;align-items:center;justify-content:flex-start;padding:10px 7px;border-right:1px solid var(--line);font:var(--type-label-2-regular);color:var(--gray-90);text-align:left;word-break:keep-all}
+.compare-cell:first-child{justify-content:flex-start;text-align:left;font:var(--type-label-2-bold)}
+.compare-cell:last-child{border-right:0}
+.compare-row.is-head .compare-cell{color:var(--gray-70);font:var(--type-caption-1-bold)}
+.compare-row.is-head .compare-cell.is-etf{background:#F7F8FA;color:var(--gray-70)}
+.compare-cell.is-etf{background:#fff;color:var(--orange-60);font:var(--type-label-2-bold)}
+.compare-cell.is-muted{color:var(--gray-90);font:var(--type-label-2-regular)}
+.compare-cell.is-multiline{align-items:flex-start;justify-content:center;flex-direction:column;line-height:18px}
+.compare-cost-line{display:block;width:100%}
+.compare-cost-line+.compare-cost-line{margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="compare-table">
+  <div class="compare-row is-head"><div class="compare-cell"></div><div class="compare-cell is-etf">ETF</div><div class="compare-cell">주식</div><div class="compare-cell">펀드</div></div>
+  <div class="compare-row"><div class="compare-cell">실시간 거래</div><div class="compare-cell is-etf">가능</div><div class="compare-cell is-muted">가능</div><div class="compare-cell is-muted">불가</div></div>
+  <div class="compare-row"><div class="compare-cell">분산효과&amp;투자 다양성</div><div class="compare-cell is-etf">높음</div><div class="compare-cell is-muted">낮음</div><div class="compare-cell is-muted">높음</div></div>
+  <div class="compare-row"><div class="compare-cell">거래 비용</div><div class="compare-cell is-etf is-multiline">매매 수수료 + 낮은 운용보수</div><div class="compare-cell is-muted is-multiline"><span class="compare-cost-line">국내 : 매매 수수료 + 증권거래세</span><span class="compare-cost-line">해외 : 매매 수수료</span></div><div class="compare-cell is-muted is-multiline">높은 운용·판매보수 (일부 환매수수료)</div></div>
+  <div class="compare-row"><div class="compare-cell">환금성</div><div class="compare-cell is-etf">즉시</div><div class="compare-cell is-muted">즉시</div><div class="compare-cell is-muted">수일 소요</div></div>
+  <div class="compare-row"><div class="compare-cell">진입 장벽</div><div class="compare-cell is-etf">지수만 골라도 OK</div><div class="compare-cell is-muted">종목 공부 필요</div><div class="compare-cell is-muted">상품 비교 필요</div></div>
+</div>
+</body>
+</html>

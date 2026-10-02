@@ -1,0 +1,8 @@
+{
+  "name": "plus-pi-design",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "python3 -m http.server 8789 --directory .."
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PLUS Pi Blank Page</title>
+<style>
+:root{
+  --gray-00:#FFFFFF;--gray-10:#F2F2F3;--gray-20:#DDDDDF;--gray-40:#A2A2A5;--gray-60:#707075;--gray-70:#555558;--gray-80:#39393C;--gray-90:#141415;
+  --orange-10:#FFF2E5;--orange-20:#FFE4CC;--orange-60:#F37521;
+  --blue-10:#E9F3FD;--blue-20:#DEEDFC;
+  --line:#ECEDEF;--line-strong:#DDDDDF;
+  --font-display:"LIFEPLUS","Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --font-body:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --type-title-1:700 24px/32px var(--font-display);
+  --type-body-3-bold:700 16px/24px var(--font-body);
+  --type-body-4-bold:700 15px/22px var(--font-body);
+  --type-label-1-regular:400 14px/20px var(--font-body);
+  --type-label-2-regular:400 13px/18px var(--font-body);
+  --type-label-2-bold:700 13px/18px var(--font-body);
+  --type-caption-1-regular:400 12px/18px var(--font-body);
+  --type-caption-1-bold:700 12px/18px var(--font-body);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+
+/* Desktop: mobile-width card centered on a neutral background, like cookatmarket.com */
+body{
+  background:var(--gray-10);
+  display:flex;
+  justify-content:center;
+  overflow-x:hidden;
+}
+.mobile-page{
+  width:375px;
+  max-width:100%;
+  min-height:100vh;
+  background:var(--gray-00);
+  color:var(--gray-90);
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* On real mobile viewports the card just fills the screen, no side background visible */
+@media (min-width:376px){
+  .mobile-page{
+    box-shadow:0 0 0 1px var(--line-strong);
+  }
+}
+
+.top{
+  height:52px;
+  display:flex;
+  align-items:center;
+  padding:0 20px;
+  border-bottom:1px solid var(--line);
+  background:var(--gray-00);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.top b{font:var(--type-body-3-bold)}
+
+.content{
+  padding:24px 20px 40px;
+  min-height:calc(100vh - 52px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.empty-state{
+  text-align:center;
+  color:var(--gray-60);
+  font:var(--type-label-1-regular);
+}
+</style>
+</head>
+<body>
+<div class="mobile-page">
+  <header class="top"><b>PLUS Pi</b></header>
+  <main class="content">
+    <p class="empty-state">빈 페이지입니다</p>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+@import url("../plus-design-system/implementation/hanwha-life-plus-design-system/plus-ui.css");
+
+:root {
+  color-scheme: light;
+  background: var(--color-bg-secondary);
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-family: var(--font-pretendard);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.plus-page {
+  width: min(100%, 500px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin-inline: auto;
+  background: var(--color-bg-primary);
+  overflow-x: clip;
+}
+
+.plus-page__content {
+  width: 100%;
+  min-height: inherit;
+  padding: 24px 20px 48px;
+}

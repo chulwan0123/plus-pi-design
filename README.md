@@ -1,5 +1,24 @@
 # PLUS Market Cap Mobile
 
+## 로컬 빈 페이지
+
+반응형 로컬 개발의 기본 진입점은 `index.html`입니다. 데스크톱에서는 회색 전체 배경 위에 500px 너비의 흰색 모바일 콘텐츠 영역을 중앙 정렬하고, 500px 이하 화면에서는 흰색 영역이 화면 전체 폭을 사용합니다. 별도 테두리나 기기 프레임은 없습니다. 인접한 `plus-design-system` 저장소의 실제 토큰·컴포넌트 CSS·웹폰트를 직접 불러옵니다.
+
+두 저장소의 공통 상위 폴더를 정적 서버 루트로 사용합니다.
+
+```sh
+cd /Users/hanwha/Documents/GitHub/plus-pi-design
+npm run dev
+```
+
+브라우저에서 다음 주소를 엽니다.
+
+```text
+http://127.0.0.1:8789/plus-pi-design/
+```
+
+페이지 콘텐츠는 `index.html`의 `.plus-page__content` 안에서 개발합니다. 흰색 콘텐츠 영역의 기본 좌우 거터는 20px입니다.
+
 PLUS Pi 모바일 ETF 교육 페이지의 독립 산출물입니다.
 
 이 폴더는 `plus-design-system` 문서와 분리되어 있습니다. 디자인시스템 HTML 안에 포함되는 문서가 아니라, 375px 모바일 기준으로 만든 별도 HTML 페이지입니다.
